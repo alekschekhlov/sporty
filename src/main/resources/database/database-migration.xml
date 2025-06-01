@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+
+    <changeSet id="1" author="aliaksei">
+        <createTable tableName="bets">
+            <column name="bet_id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_market_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_winner_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bet_amount" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="settlement_initiated_at" type="datetime"/>
+            <column name="settlement_completed_at" type="datetime"/>
+        </createTable>
+        <createIndex indexName="idx_user_id" tableName="bets">
+            <column name="user_id"/>
+        </createIndex>
+        <createIndex indexName="idx_event_id" tableName="bets">
+            <column name="event_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
